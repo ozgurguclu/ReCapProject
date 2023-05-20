@@ -4,6 +4,7 @@ using Entities.Concrete;
 using Entities.DTOs;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace Business.Concrete
@@ -19,7 +20,7 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            if (car.Description.Length >= 2 && car.DailyPrice > 0)
+            if (car.Name.Length >= 2 && car.DailyPrice > 0)
                 _carDal.Add(car);
             else
                 Console.WriteLine("Araba eklenemedi");
@@ -30,9 +31,19 @@ namespace Business.Concrete
             _carDal.Delete(car);
         }
 
+        public Car Get(int id)
+        {
+            return _carDal.Get(c => c.Id == id);
+        }
+
         public List<Car> GetAll()
         {
             return _carDal.GetAll();
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int brandId)
