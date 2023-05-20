@@ -65,10 +65,5 @@ namespace DataAccess.Concrete.InMemory
         {
             throw new NotImplementedException();
         }
-
-        public List<Car> GetAllByCategory(int categoryId)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
