@@ -1,4 +1,5 @@
-﻿using Entities.Concrete;
+﻿using Business.Constants;
+using Entities.Concrete;
 using FluentValidation;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace Business.ValidationRules.FluentValidation
         {
             // Description can be empty
             //RuleFor(p => p.Description).NotEmpty();
-            //RuleFor(p => p.Description).MinimumLength(2).WithMessage("Description must be at least 2 characters");
+            //RuleFor(p => p.Description).MinimumLength(2).WithMessage(Messages.CarDescriptionLengthError);
+            RuleFor(p => p.Name).MinimumLength(2);
             RuleFor(p => p.DailyPrice).NotEmpty();
             RuleFor(p => p.DailyPrice).GreaterThan(0);
             RuleFor(p => p.ModelYear).NotEmpty();

@@ -14,6 +14,7 @@ namespace Business.Constants
         public static string CarDeleted = "Araba silindi";
         public static string CarUpdated = "Araba güncellendi";
         public static string CarsListed = "Arabalar listelendi";
+        public static string CarDescriptionLengthError = "Açıklama en az 25 karakter uzunluğunda olmalıdır";
 
         public static string ColorAdded = "Renk eklendi";
         public static string ColorDeleted = "Renk silindi";
