@@ -13,6 +13,8 @@ using System.Collections.Generic;
 using System.Text;
 using Core.Utilities.Helpers;
 using System.Linq;
+using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 
 namespace Business.Concrete
 {
@@ -62,6 +64,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<CarImage>>(_carImageDal.GetAll());
         }
 
+        [CacheAspect(duration: 10)]
         public IDataResult<List<CarImage>> GetImagesByCarId(int id)
         {
             var result = _carImageDal.GetAll(c => c.CarId == id).Any();
@@ -93,6 +96,15 @@ namespace Business.Concrete
             }
 
             return new SuccessResult();
+        }
+
+        [TransactionScopeAspect]
+        public IResult TransactionalOperation(CarImage carImage, IFormFile file)
+        {
+            Add(carImage, file);
+            Update(carImage, file);
+
+            return new SuccessResult(Messages.CarImageUpdated);
         }
     }
 }
