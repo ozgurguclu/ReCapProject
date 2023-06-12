@@ -19,8 +19,6 @@ namespace Business.Concrete
     public class CarManager : ICarService
     {
         ICarDal _carDal;
-        IBrandService _brandService;
-        IColorService _colorService;
 
         public CarManager(ICarDal carDal)
         {
@@ -71,12 +69,12 @@ namespace Business.Concrete
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByBrandId(int brandId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(p => p.BrandName == _brandService.Get(brandId).Data.Name).ToList());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(p => p.BrandId == brandId).ToList());
         }
 
         public IDataResult<List<CarDetailDto>> GetCarDetailsByColorId(int colorId)
         {
-            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(p => p.ColorName == _colorService.Get(colorId).Data.Name).ToList());
+            return new SuccessDataResult<List<CarDetailDto>>(_carDal.GetCarDetails().Where(p => p.ColorId == colorId).ToList());
         }
 
         public IDataResult<List<Car>> GetCarsByBrandId(int brandId)

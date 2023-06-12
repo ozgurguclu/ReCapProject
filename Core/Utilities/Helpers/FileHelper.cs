@@ -31,7 +31,7 @@ namespace Core.Utilities.Helpers
                 return exception.Message;
             }
 
-            return "/Images/" + fileName;
+            return fileName;
         }
 
         public static string Update(string sourcePath, IFormFile file)

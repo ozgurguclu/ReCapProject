@@ -62,7 +62,7 @@ namespace Business.Concrete
 
         public IDataResult<List<RentalDetailDto>> GetRentalDetailsByCustomerId(int customerId)
         {
-            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails().Where(r => r.CustomerId == customerId).ToList());
+            return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetails().Where(r => r.CustomerId  == customerId).ToList());
         }
 
         [ValidationAspect(typeof(RentalValidator))]

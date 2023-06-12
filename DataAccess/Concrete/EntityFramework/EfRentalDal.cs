@@ -27,6 +27,8 @@ namespace DataAccess.Concrete.EntityFramework
                              {
                                  RentalId = rental.Id,
                                  CarId = car.Id,
+                                 BrandId = brand.Id,
+                                 ColorId = color.Id,
                                  CustomerId = customer.Id,
                                  CarName = car.Name,
                                  BrandName = brand.Name,
